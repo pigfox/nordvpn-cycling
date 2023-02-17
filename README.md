@@ -6,6 +6,7 @@ It assumes that you already have a NORDVPN account and have the ability to acces
 ## Installation
 1. Clone the repo
 2. chmod +x rebuild-restart.sh
-3. chmod +x nordvpn-cycle
-4. ./nordvpn-cycle
+3. ./rebuild-restart.sh
+4. chmod +x nordvpn-cycle
+5. ./nordvpn-cycle
 
