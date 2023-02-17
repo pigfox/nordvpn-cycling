@@ -25,7 +25,7 @@ func main() {
 		connect(random(cities))
 		connected := status()
 		if connected {
-			n := rand.Intn(60)
+			n := rand.Intn(maxSleepTimeMinutes)
 			fmt.Println("Sleeping for " + strconv.Itoa(n) + " minutes...")
 			time.Sleep(time.Duration(n) * time.Minute)
 			clear()
