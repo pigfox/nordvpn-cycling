@@ -3,6 +3,7 @@ As the name suggests it selects in a timely random manner a random location from
 
 It assumes that you already have a NORDVPN account and have the ability to access it from terminal.
 
+The second assuption is that you have Go installed.
 ## Installation
 1. Clone the repo
 2. chmod +x rebuild-restart.sh
