@@ -15,8 +15,8 @@ func main() {
 	}()
 	connectAttempts := 0
 	for {
-		if connectAttempts == config.MaxRetryConnectAttempts {
-			panic(strconv.Itoa(connectAttempts) + " retry attempts has reached max " + strconv.Itoa(config.MaxRetryConnectAttempts))
+		if connectAttempts == config.MaxConnectAttempts {
+			panic(strconv.Itoa(connectAttempts) + " retry attempts has reached max " + strconv.Itoa(config.MaxConnectAttempts))
 		}
 		cities := make(map[string][]string)
 		countries := getCountries()
