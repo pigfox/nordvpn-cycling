@@ -34,7 +34,7 @@ func sanitizeCities(s string) []string {
 	cArr := strings.Split(parts[1], " ")
 	var filtered []string
 	for _, v := range cArr {
-		if contentMinLength < len(v) {
+		if config.ContentMinLength < len(v) {
 			filtered = append(filtered, v)
 		}
 	}

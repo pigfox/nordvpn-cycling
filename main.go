@@ -13,11 +13,15 @@ func main() {
 			fmt.Println("Recovered in f: ", r)
 		}
 	}()
+	connectAttempts := 0
 	for {
+		if connectAttempts == config.MaxRetryConnectAttempts {
+			panic(strconv.Itoa(connectAttempts) + " retry attempts has reached max " + strconv.Itoa(config.MaxRetryConnectAttempts))
+		}
 		cities := make(map[string][]string)
 		countries := getCountries()
 		for _, v := range countries {
-			if contentMinLength < len(v) {
+			if config.ContentMinLength < len(v) {
 				cities[v] = getCities(v)
 			}
 		}
@@ -25,11 +29,13 @@ func main() {
 		connect(random(cities))
 		connected := status()
 		if connected {
-			n := rand.Intn(maxSleepTimeMinutes)
+			n := rand.Intn(config.MaxSleepTimeMinutes)
 			fmt.Println("Sleeping for " + strconv.Itoa(n) + " minutes...")
 			time.Sleep(time.Duration(n) * time.Minute)
+			connectAttempts = 0
 			clear()
 		}
-		fmt.Println("Reconnect attempt at: ", time.Now())
+		connectAttempts++
+		fmt.Println("Connect attempt #"+strconv.Itoa(connectAttempts)+" at ", time.Now())
 	}
 }
