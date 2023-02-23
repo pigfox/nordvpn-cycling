@@ -1,2 +1,4 @@
 .gitignore
 .idea/vcs.xml
+bugs.txt
+commit.sh
