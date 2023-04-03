@@ -1,0 +1,40 @@
+exit status 1 @ File: cities.go  Function: main.getCities Line: 25
+exit status 1 @ File: cities.go  Function: main.getCities Line: 25
+exit status 1 @ File: cities.go  Function: main.getCities Line: 25
+exit status 1 @ File: cities.go  Function: main.getCities Line: 25
+exit status 1 @ File: cities.go  Function: main.getCities Line: 25
+exit status 1 @ File: cities.go  Function: main.getCities Line: 25
+exit status 1 @ File: cities.go  Function: main.getCities Line: 25
+exit status 1 @ File: cities.go  Function: main.getCities Line: 25
+exit status 1 @ File: cities.go  Function: main.getCities Line: 25
+exit status 1 @ File: cities.go  Function: main.getCities Line: 25
+exit status 1 @ File: cities.go  Function: main.getCities Line: 25
+exit status 1 @ File: cities.go  Function: main.getCities Line: 25
+exit status 1 @ File: cities.go  Function: main.getCities Line: 25
+exit status 1 @ File: cities.go  Function: main.getCities Line: 25
+exit status 1 @ File: connect.go  Function: main.connect Line: 23
+The specified server does not exist.
+Sleeping for 26 minutes...
+^C
+
+Albania			Germany			Poland
+Argentina		Greece			Portugal
+Australia		Hong_Kong		Romania
+Austria			Hungary			Serbia
+Belgium			Iceland			Singapore
+Bosnia_And_Herzegovina	Indonesia		Slovakia
+Brazil			Ireland			Slovenia
+Bulgaria		Israel			South_Africa
+Canada			Italy			South_Korea
+Chile			Japan			Spain
+Colombia		Latvia			Sweden
+Costa_Rica		Lithuania		Switzerland
+Croatia			Luxembourg		Taiwan
+Cyprus			Malaysia		Thailand
+Czech_Republic		Mexico			Turkey
+Denmark			Moldova			Ukraine
+Estonia			Netherlands		United_Kingdom
+Finland			New_Zealand		United_States
+France			North_Macedonia		Vietnam
+Georgia			Norway
+

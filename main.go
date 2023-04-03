@@ -7,12 +7,18 @@ import (
 	"time"
 )
 
+func init() {
+	setPotentialData()
+}
+
 func main() {
-	defer func() {
-		if r := recover(); r != nil {
-			fmt.Println("Recovered in f: ", r)
-		}
-	}()
+	/*
+		defer func() {
+			if r := recover(); r != nil {
+				fmt.Println("Recovered in f: ", r)
+			}
+		}()
+	*/
 	connectAttempts := 0
 	for {
 		if connectAttempts == config.MaxConnectAttempts {
@@ -26,7 +32,7 @@ func main() {
 			}
 		}
 
-		connect(random(cities))
+		connect(random(cities)) ///home/peter/Documents/go-projects/go-nordvpn-cycling/main.go:35 +
 		connected := status()
 		if connected {
 			n := rand.Intn(config.MaxSleepTimeMinutes)
