@@ -14,6 +14,7 @@ var potentialData PotentialData
 var availableData AvailableData
 
 func setPotentialData() {
+	availableData.Cities = make(map[string][]string)
 	potentialData.Countries = []string{"Albania", "Argentina", "Australia", "Austria", "Belgium", "Bosnia_And_Herzegovina",
 		"Brazil", "Bulgaria", "Canada", "Chile", "Colombia", "Costa_Rica", "Croatia", "Cyprus", "Czech_Republic",
 		"Denmark", "Estonia", "Finland", "France", "Georgia", "Germany", "Greece", "Hong_Kong", "Hungary", "Iceland",

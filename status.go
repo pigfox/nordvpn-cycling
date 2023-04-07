@@ -23,6 +23,7 @@ func status() bool {
 		fmt.Println(err.Error() + " @ " + whereami.WhereAmI())
 	}
 	if strings.Contains(out.String(), "Status: Connected") {
+		fmt.Print(out.String())
 		return true
 	}
 	return false

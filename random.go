@@ -9,13 +9,13 @@ import (
 /*
 Select a random country, then select a random city.
 */
-func random(cities map[string][]string) string {
-	keys := reflect.ValueOf(cities).MapKeys()
-	country := keys[rand.Intn(len(keys))].Interface()
+func random() string {
+	//get country
+	countryKeys := reflect.ValueOf(availableData.Cities).MapKeys()
+	country := countryKeys[rand.Intn(len(countryKeys))].Interface()
 	countryStr := fmt.Sprintf("%v", country)
-	numCities := len(cities[countryStr])
-	randomCityIndex := rand.Intn(numCities)
-	return cities[countryStr][randomCityIndex]
+	//get city
+	numCities := len(availableData.Cities[countryStr])
+	randomIndex := rand.Intn(numCities)
+	return availableData.Cities[countryStr][randomIndex]
 }
-
-//https://stackoverflow.com/questions/23482786/get-an-arbitrary-key-item-from-a-map

@@ -3,41 +3,39 @@ package main
 import (
 	"bytes"
 	"fmt"
+	"github.com/jimlawless/whereami"
 	"os/exec"
 	"strings"
-
-	"github.com/jimlawless/whereami"
 )
 
 /*
 Get a list of all the cities in a given country.
 */
-func getCities(country string) []string {
-	args := []string{"cities"}
-	args = append(args, country)
-	cmd := exec.Command("nordvpn", args...)
+func getCities() {
+	for _, country := range availableData.Countries {
+		args := []string{"cities"}
+		args = append(args, country)
+		cmd := exec.Command("nordvpn", args...)
 
-	var out bytes.Buffer
-	cmd.Stdout = &out
+		var out bytes.Buffer
+		cmd.Stdout = &out
 
-	err := cmd.Run()
-	if err != nil {
-		fmt.Println(err.Error() + " @ " + whereami.WhereAmI())
+		err := cmd.Run()
+		if err != nil {
+			fmt.Println(err.Error() + " @ " + whereami.WhereAmI())
+		}
+		cities := sanitize(out.String())
+
+		findCities(cities, country)
 	}
-
-	return sanitizeCities(out.String())
 }
 
-func sanitizeCities(s string) []string {
-	parts := strings.Split(s, "\n")
-	parts[1] = nonAlphanumericRegexReplaceAll(parts[1])
-	cArr := strings.Split(parts[1], " ")
-	var filtered []string
-	for _, v := range cArr {
-		if config.ContentMinLength < len(v) {
-			filtered = append(filtered, v)
+func findCities(cities string, country string) {
+	var tmpCities []string
+	for _, city := range potentialData.Cities[country] {
+		if strings.Contains(cities, city) {
+			tmpCities = append(tmpCities, city)
 		}
 	}
-
-	return filtered
+	availableData.Cities[country] = tmpCities
 }

@@ -3,16 +3,15 @@ package main
 import (
 	"bytes"
 	"fmt"
+	"github.com/jimlawless/whereami"
 	"os/exec"
 	"strings"
-
-	"github.com/jimlawless/whereami"
 )
 
 /*
 Get a list of all countries.
 */
-func getCountries() []string {
+func getCountries() {
 	cmd := exec.Command("nordvpn", "countries")
 	var out bytes.Buffer
 	cmd.Stdout = &out
@@ -23,19 +22,13 @@ func getCountries() []string {
 		fmt.Println(err.Error() + " @ " + whereami.WhereAmI())
 	}
 
-	return sanitizeCountry(out.String())
+	findCountries(sanitize(out.String()))
 }
 
-func sanitizeCountry(s string) []string {
-	parts := strings.Split(s, "\n")
-	parts[1] = nonAlphanumericRegexReplaceAll(parts[1])
-	cArr := strings.Split(parts[1], " ")
-	var filtered []string
-	for _, v := range cArr {
-		if config.ContentMinLength < len(v) {
-			filtered = append(filtered, v)
+func findCountries(input string) {
+	for _, country := range potentialData.Countries {
+		if strings.Contains(input, country) {
+			availableData.Countries = append(availableData.Countries, country)
 		}
 	}
-
-	return filtered
 }

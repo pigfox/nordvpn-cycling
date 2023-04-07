@@ -12,27 +12,19 @@ func init() {
 }
 
 func main() {
-	/*
-		defer func() {
-			if r := recover(); r != nil {
-				fmt.Println("Recovered in f: ", r)
-			}
-		}()
-	*/
+	defer func() {
+		if r := recover(); r != nil {
+			fmt.Println("Recovered in f: ", r)
+		}
+	}()
 	connectAttempts := 0
 	for {
 		if connectAttempts == config.MaxConnectAttempts {
 			panic(strconv.Itoa(connectAttempts) + " retry attempts has reached max " + strconv.Itoa(config.MaxConnectAttempts))
 		}
-		cities := make(map[string][]string)
-		countries := getCountries()
-		for _, v := range countries {
-			if config.ContentMinLength < len(v) {
-				cities[v] = getCities(v)
-			}
-		}
-
-		connect(random(cities)) ///home/peter/Documents/go-projects/go-nordvpn-cycling/main.go:35 +
+		getCountries()
+		getCities()
+		connect(random())
 		connected := status()
 		if connected {
 			n := rand.Intn(config.MaxSleepTimeMinutes)

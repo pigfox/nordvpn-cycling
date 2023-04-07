@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"github.com/jimlawless/whereami"
 	"os/exec"
-	"strings"
 )
 
 /*
@@ -22,6 +21,4 @@ func connect(city string) {
 	if err != nil {
 		fmt.Println(err.Error() + " @ " + whereami.WhereAmI())
 	}
-	parts := strings.Split(out.String(), "\n")
-	fmt.Println(parts[2])
 }
