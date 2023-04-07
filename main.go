@@ -25,10 +25,11 @@ func main() {
 		getCountries()
 		getCities()
 		connect(random())
-		connected := status()
+		cmdResponse, connected := status()
 		if connected {
 			n := rand.Intn(config.MaxSleepTimeMinutes)
-			fmt.Println("Sleeping for " + strconv.Itoa(n) + " minutes...")
+			fmt.Println(cmdResponse)
+			fmt.Println("Sleeping for " + strconv.Itoa(n) + " minutes until next refresh...")
 			time.Sleep(time.Duration(n) * time.Minute)
 			connectAttempts = 0
 			clear()

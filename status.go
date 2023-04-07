@@ -11,7 +11,7 @@ import (
 /*
 Get the status of a connection.
 */
-func status() bool {
+func status() (string, bool) {
 	cmd := exec.Command("nordvpn", "status")
 
 	var out bytes.Buffer
@@ -23,8 +23,7 @@ func status() bool {
 		fmt.Println(err.Error() + " @ " + whereami.WhereAmI())
 	}
 	if strings.Contains(out.String(), "Status: Connected") {
-		fmt.Print(out.String())
-		return true
+		return out.String(), true
 	}
-	return false
+	return "", false
 }
