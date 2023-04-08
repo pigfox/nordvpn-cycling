@@ -12,6 +12,7 @@ func init() {
 }
 
 func main() {
+	layout := "2006-01-02 15:04:05"
 	defer func() {
 		if r := recover(); r != nil {
 			fmt.Println("Recovered in f: ", r)
@@ -28,7 +29,7 @@ func main() {
 		cmdResponse, connected := status()
 		if connected {
 			n := rand.Intn(config.MaxSleepTimeMinutes)
-			fmt.Println("Started:", time.Now().Format("2006-01-02 15:04:05"))
+			fmt.Println("Started:", time.Now().Format(layout))
 			fmt.Println(cmdResponse)
 			fmt.Println("Sleeping for " + strconv.Itoa(n) + " minutes until next refresh...")
 			time.Sleep(time.Duration(n) * time.Minute)
@@ -36,6 +37,6 @@ func main() {
 			clear()
 		}
 		connectAttempts++
-		fmt.Println("Connect attempt #"+strconv.Itoa(connectAttempts)+" at ", time.Now())
+		fmt.Println("Connect attempt #"+strconv.Itoa(connectAttempts)+" at ", time.Now().Format(layout))
 	}
 }
