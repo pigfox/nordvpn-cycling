@@ -21,5 +21,5 @@ func connect(city string) {
 	if err != nil {
 		fmt.Println(err.Error() + " @ " + whereami.WhereAmI())
 	}
-	fmt.Println("Connect ", out.String())
+	//fmt.Println("Connect ", out.String())
 }
