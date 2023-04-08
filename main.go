@@ -37,6 +37,6 @@ func main() {
 			clear()
 		}
 		connectAttempts++
-		fmt.Println("Connect attempt #"+strconv.Itoa(connectAttempts)+" at ", time.Now().Format(layout))
+		fmt.Println("Connect attempt #"+strconv.Itoa(connectAttempts)+" at:", time.Now().Format(layout))
 	}
 }
